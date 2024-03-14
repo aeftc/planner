@@ -158,6 +158,7 @@ class Scheduler
      * We need better profiling. Maybe draw a cool flame chart?
      * [!] writing to lists takes lots of time, especially in performance-critical ticks
      */
+    @Suppress("unused")
     fun statsheet(): String {
         var waiting = 0
         var progress = 0
@@ -233,6 +234,7 @@ class Scheduler
         return tasks.values.any { it.state != Task.State.Finished && !it.daemon }
     }
 
+    @Suppress("unused")
     fun runToCompletion(ok: () -> Boolean) {
         while (hasJobs() && ok()) {
             tick()
@@ -268,6 +270,7 @@ class Scheduler
         cancel = cancel, dropNonStarted = false
     )
 
+    @Suppress("unused")
     fun filteredStop(predicate: (Task) -> Boolean) = filteredStop(
         predicate,
         cancel = true,

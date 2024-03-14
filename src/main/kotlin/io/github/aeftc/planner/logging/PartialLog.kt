@@ -1,5 +1,6 @@
 package io.github.aeftc.planner.logging
 
+@Suppress("unused")
 class PartialLog(private val logProvider: LogProvider, private val tag: String) {
     fun d(message: String) = logProvider.d(tag, message)
     fun i(message: String) = logProvider.i(tag, message)
