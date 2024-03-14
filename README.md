@@ -19,6 +19,8 @@ a hassle
 * blocking `Scheduler#runToCompletion(Predicate p)` with exit condition
 ### Goals
 * pause tasks (`Task#onPause` `Task#onResume` `Scheduler#pause` `Scheduler#resume`)
+* uninterruptible handoffs (param to `Task#then`): if the next task **can** start (check immediately after releasing)
+resources held by the current task, **start it immediately** (and prevent other tasks from stealing the resource)
 * task groups (exclusive and/or `Scheduler#waitForAll`)
 * make cancellation options more explicit (cancel running tasks? call `onCancel`? `onFinish`? drop queued tasks?)
 * drop-in profiler version of `Scheduler`: analyze time usage per tick, find slow tasks
