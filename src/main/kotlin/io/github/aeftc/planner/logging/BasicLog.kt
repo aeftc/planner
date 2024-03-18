@@ -3,7 +3,7 @@ package io.github.aeftc.planner.logging
 import kotlinx.datetime.*
 import kotlinx.datetime.format.DateTimeFormat
 
-class BasicLog(private val dateFormat: DateTimeFormat<LocalDateTime> = DEFAULT_DATETIME_FORMAT) : LogProvider {
+open class BasicLog(private val dateFormat: DateTimeFormat<LocalDateTime> = DEFAULT_DATETIME_FORMAT) : LogProvider {
     companion object {
         val DEFAULT_DATETIME_FORMAT = LocalDateTime.Format {
             hour()
@@ -22,7 +22,8 @@ class BasicLog(private val dateFormat: DateTimeFormat<LocalDateTime> = DEFAULT_D
         val merged = StringBuilder(headers)
         message.split("\n").forEachIndexed { idx, line ->
             if (idx != 0) {
-                // indent the next lines so that they line up with the header
+                // indent the next lines so that they line up with the header.
+                // looks great if you don't have word wrap enabled
                 merged.append("\n").append(" ".repeat(headers.length))
             }
             merged.append(line)

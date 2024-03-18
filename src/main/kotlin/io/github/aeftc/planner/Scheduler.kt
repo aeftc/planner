@@ -28,7 +28,7 @@ class Scheduler
             } catch (e: Exception) {
                 val stack = e.stackTrace
                 for (frame in stack) {
-                    if (frame.className.contains("dev.aether.collaborative_multitasking")) continue
+                    if (frame.className.contains("io.github.aeftc.planner")) continue
                     return "${
                         frame.className.split(".").last()
                     }.${frame.methodName} line ${frame.lineNumber}"
